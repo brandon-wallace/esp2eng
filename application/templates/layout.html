@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock %} / esp2eng.tk</title>
+  </head>
+  <body>
+
+    <noscript>
+      <p style="color:#FC0000;text-align:center">Please enable Javascript</p>
+    </noscript>
+
+    <header>
+
+      <nav>
+        <ul class="menu">
+          <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
+          <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
+          <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
+        </ul>
+      </nav>
+
+    </header>
+    
+    {% block content %}
+
+    {% endblock %}
+
+    <footer>
+
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+  </body>
+</html>
