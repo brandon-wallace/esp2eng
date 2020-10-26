@@ -6,7 +6,31 @@
 
 {% block content %}
 
-  <h1>Spanish2English</h1>
-  <h2>sign up</h2>
+  <section class="form__container">
+
+    <h1 class="page__header-2">Esp2Eng!</h1>
+
+    <h2 class="page__subheader">sign up</h2>
+
+    <form action="" method="POST">
+
+      {{ form.csrf_token }}
+      {{ form.username(class_="form__input", placeholder="Username", autofocus=true) }}
+      {{ form.firstname(class_="form__input", placeholder="First Name") }}
+      {{ form.lastname(class_="form__input", placeholder="Last Name") }}
+      {{ form.email(class_="form__input", placeholder="Enter Email") }}
+      {{ form.password(class_="form__input passwd__field", placeholder="Enter Password") }}
+      {{ form.confirm_password(class_="form__input passwd__field", placeholder="Re-Enter Password") }}
+      <p class="form__agreement">By clicking Sign Up, I agree to the Esp2eng
+      <a class="login__link anchor__link" href="{{ url_for('auth.terms_of_service') }}">terms of service</a> and 
+      <a class="login__link anchor__link" href="{{ url_for('auth.privacy_policy') }}">privacy policy</a>.
+      </p>
+      {{ form.submit(class_="bttn") }}
+
+      <p>Already have an account? <a class="anchor__link" href="{{ url_for('auth.login') }}">login</a></p>
+
+    </form>
+
+  </section>
 
 {% endblock %}

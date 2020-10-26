@@ -33,7 +33,7 @@ def sign_up():
         except Exception:
             flash('An error ocurred!', 'danger')
             return redirect(url_for('auth.signup'))
-    return render_template('auth/signup.html')
+    return render_template('auth/signup.html', form=form)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -81,3 +81,17 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'success')
     return render_template('main/index.html')
+
+
+@auth.route('/terms_of_service')
+def terms_of_service():
+    '''terms_of_service'''
+
+    return render_template('auth/terms_of_service.html')
+
+
+@auth.route('/privacy_policy')
+def privacy_policy():
+    '''privacy_policy'''
+
+    return render_template('auth/privacy_policy.html')

@@ -34,11 +34,13 @@ class Word(db.Model):
 
     __tablename__ = 'word'
     id = db.Column(db.Integer, primary_key=True)
-    word_es = db.Column(db.String(150), nullable=False)
+    word_es = db.Column(db.String(150), unique=True, nullable=False)
     sentence1_es = db.Column(db.String(150), nullable=False)
-    sentence2_es = db.Column(db.String(150), nullable=True)
     sentence1_en = db.Column(db.String(150), nullable=False)
+    sentence2_es = db.Column(db.String(150), nullable=True)
     sentence2_en = db.Column(db.String(150), nullable=True)
+    sentence3_es = db.Column(db.String(150), nullable=True)
+    sentence3_en = db.Column(db.String(150), nullable=True)
     definition1_en = db.Column(db.String(50), nullable=False)
     definition2_en = db.Column(db.String(50), nullable=True)
     definition3_en = db.Column(db.String(50), nullable=True)

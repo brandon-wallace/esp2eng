@@ -5,8 +5,8 @@
 }
 
 :root {
-    --fg: #DDDDDD;
-    --bg: #333333;
+    --bg: #DDDDDD;
+    --fg: #333333;
     --anchor-link: #0066FF;
 }
 
@@ -21,12 +21,28 @@ body {
     color: var(--fg, #DDDDDD);
     font-family: monospace, monospace;
     background-color: var(--bg, #333333);
-    background: linear-gradient(to left, #333333, #232323);
+    /* background: linear-gradient(to left, #66656a, #232323); */
+}
+
+.home__page {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/couple_for_web_bw.png');
+    background-position: bottom right;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login__page {
+    background-image: url('../images/man_laugh_for_web_bw.png');
+    background-position: bottom left;
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 
 a {
     text-decoration: none;
-    color: var(--anchor-link, #0066FF);
+    color: var(--fg, #333333);
     background-color: transparent;
 }
 
@@ -42,7 +58,7 @@ li {
 h1, h2, h3,
 h4, h5, h6 {
     margin: 0;
-    color: #FFFFFF;
+    color: #000000;
 }
 
 button {
@@ -52,17 +68,193 @@ button {
 
 header {
     width: 100%;
+    display: flex;
+}
+
+nav {
+    display: none;
+
+}
+
+.hamburger {
+    width: 50px;
+    height: 50px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    transition: all .1s ease-in-out;
+    background-color: transparent;
+}
+
+.hamburger__button {
+    width: 50px;
+    height: 6px;
+    border-radius: 5px;
+    background-color: var(--fg, #333333);
+    transition: all .1s ease-in-out;
+}
+
+.hamburger__button::before,
+.hamburger__button::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    border-radius: 5px;
+    background-color: var(--fg, #333333);
+    transition: all .1s ease-in-out;
+}
+
+.hamburger__button::before {
+  transform: translateY(-16px);
+}
+
+.hamburger__button::after {
+  transform: translateY(16px);
+}
+
+.hamburger.open .hamburger__button {
+  transform: translateX(-20px);
+  background: transparent;
+}
+
+.hamburger.open .hamburger__button::before {
+  transform-origin: center;
+  transform: rotate(45deg) translate(15px, -15px);
+}
+
+.hamburger.open .hamburger__button::after {
+  transform-origin: center;
+  transform: rotate(-45deg) translate(15px, 15px);
+}
+
+.message {
+    width: 100%;
+    border: solid;
+    max-width: 520px;
+    font-weight: bold;
+    line-height: 40px;
+    border-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.message--fail {
+    color: #4A0101;
+    background-color: hsl(0, 100%, 70%);
+}
+
+.message--success {
+    color: #000000;
+    background-color: hsl(202, 100%, 70%);
+}
+
+.message--warning {
+    color: #1002D9;
+    background-color: hsl(123, 100%, 70%);
+}
+
+.message--info {
+    color: #1002D9;
+    background-color: hsl(75, 100%, 70%);
+}
+
+.form__container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+form {
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.form__div {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    border: 2px solid var(--fg, #333333);
+}
+
+.form__div label {
+    display: block;
+    margin: 0 0 8px 0;
+}
+
+.form--wide {
+    max-width: 900px;
+}
+
+.form__input {
+    width: 100%;
+    height: 50px;
+    display: block;
+    padding: 0 .5rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: inherit;
+    margin-bottom: .5rem;
+    box-sizing: border-box;
+    border: 2px solid var(--fg, #333333);
+}
+
+.password__field {
+    letter-spacing: 4px;
+    font-size: 1.5rem;
+}
+
+.password__field::-moz-placeholder {
+    letter-spacing: normal;
+}
+
+.password__field::-webkit-input-placeholder {
+    letter-spacing: normal;
+}
+.password__field::-moz-placeholder {
+    letter-spacing: normal;
+}
+.password__field:-ms-input-placeholder {
+    letter-spacing: normal;
+}
+.password__field::-ms-input-placeholder {
+    letter-spacing: normal;
+}
+.password__field::placeholder {
+    letter-spacing: normal;
+}
+
+.bttn {
+    border: 0;
+    width: 100%;
+    height: 50px;
+    display: block;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.25rem;
+    letter-spacing: 2.5px;
+    background-color: #0066FF;
+    border: 2px solid var(--fg, #333333);
 }
 
 footer {
+    bottom: 0;
+    z-index: -1;
     width: 100%;
     height: 620px;
-    bottom: 0;
     position: fixed;
+    /*
     background-image: url('../images/background_slant.png');
-    background-position: bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('../images/background-2976.png');
+    */
 }
 
 .menu {
@@ -74,11 +266,14 @@ footer {
 }
 
 .menu__item {
-    margin: 0 1rem;
+    margin: 0;
+    padding: 0;
 }
 
 .menu__link {
-    color: #FFFFFF;
+    padding: .5rem 1rem;
+    box-sizing: border-box;
+    color: var(--fg, #333333);
     text-decoration: underline;
 }
 
@@ -87,9 +282,69 @@ footer {
     font-size: 11rem;
     text-align: center;
     font-style: italic;
+    transform: rotate(-4deg);
     font-family: 'RampageKid', cursive;
+    text-shadow: 1.5px  1.5px 0 #969696,
+                -1.5px  1.5px 0 #969696,
+                 1.5px -1.5px 0 #969696,
+                -1.5px -1.5px 0 #969696,
+                 2px    2px   0 #808080,
+                 3px    3px   0 #808080,
+                 4px    4px   0 #808080;
+}
+
+.page__header-2 {
+    color: #40AADD;
+    font-size: 4rem;
+    margin: 8px 10px;
+    font-style: italic;
+    transform: rotate(-4deg);
+    font-family: 'RampageKid', cursive;
+    text-shadow: 1.5px  1.5px 0 #969696,
+                -1.5px  1.5px 0 #969696,
+                 1.5px -1.5px 0 #969696,
+                -1.5px -1.5px 0 #969696,
+                 2px    2px   0 #808080,
+                 3px    3px   0 #808080,
+                 4px    4px   0 #808080;
+}
+
+.agreement {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+@media only screen and (min-width: 500px) {
+    .page__header-2,
+    .page__subheader {
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    nav {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .menu__link {
+        font-size: 1.5rem;
+    }
+}
+
+.header-2 {
+    text-decoration: center;
+}
+
+.page__subheader {
+    margin: 8px 10px;
 }
 
 .sans--serif {
     font-family: sans-serif;
 }
+
+.anchor__link {
+    text-decoration: underline;
+

@@ -15,15 +15,35 @@
 
     <header>
 
+      <div class="hamburger">
+        <div class="hamburger__button">
+        </div>
+      </div>
+
       <nav>
         <ul class="menu">
           <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
-          <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
-          <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
+          {% if current_user.is_authenticated %}
+            <li class="menu__item"><a class="menu__link" href="{{ url_for('main.add_word') }}">add word</a></li>
+            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.logout') }}">logout</a></li>
+          {% else %}
+            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
+            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
+          {% endif %}
         </ul>
       </nav>
 
     </header>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="message message--{{ category }}">
+            {{ message }}
+          </p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     
     {% block content %}
 

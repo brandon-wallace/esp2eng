@@ -1,4 +1,4 @@
-{# application/templates/main/index.html #}
+{# application/templates/auth/login.html #}
 
 {% extends "layout.html" %}
 
@@ -6,7 +6,21 @@
 
 {% block content %}
 
-  <h1>Spanish2English</h1>
-  <h2>login</h2>
+  <section class="form__container login__page">
+
+    <h1 class="page__header-2">Esp2Eng!</h1>
+
+    <h2 class="page__subheader">login</h2>
+
+    <form action="" method="POST">
+ 
+      {{ form.csrf_token }}
+      {{ form.email(class_="form__input", placeholder="Enter Email") }}
+      {{ form.password(class_="form__input passwd__field", placeholder="Enter Password") }}
+      {{ form.submit(class_="bttn") }}
+
+    </form>
+
+  </section>
 
 {% endblock %}
