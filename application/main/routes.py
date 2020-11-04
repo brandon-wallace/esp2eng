@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash
-from flask_login import current_user, login_required
+from flask_login import login_required
 from sqlalchemy.exc import IntegrityError
 from application import db
 from application.main import main
@@ -11,7 +11,8 @@ from application.models import Word
 def index():
     '''Index route'''
 
-    return render_template('main/index.html')
+    words = Word.query.all()
+    return render_template('main/index.html', words=words)
 
 
 @main.route('/add-word', methods=['GET', 'POST'])
@@ -37,9 +38,10 @@ def add_word():
             db.session.commit()
             db.session.remove()
             flash('Word added successfully', 'success')
+            return redirect(url_for('main.add_word', _external=True))
         except IntegrityError:
             db.session.rollback()
-            return redirect(url_for('main.add_word'))
+            return redirect(url_for('main.add_word', _external=True))
     return render_template('main/add_word.html', form=form)
 
 
@@ -52,6 +54,6 @@ def page_not_found(error):
 
 @main.app_errorhandler(500)
 def internal_server_error(error):
-    '''505 Internal server error'''
+    '''500 Internal server error'''
 
     return render_template('500.html'), 500

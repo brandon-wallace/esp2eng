@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>{% block title %}{% endblock %} / esp2eng.tk</title>
+    <title>{% block title %}{% endblock %} : esp2eng.tk</title>
   </head>
   <body>
 
@@ -24,6 +25,7 @@
         <ul class="menu">
           <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
           {% if current_user.is_authenticated %}
+            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.profile') }}">profile</a></li>
             <li class="menu__item"><a class="menu__link" href="{{ url_for('main.add_word') }}">add word</a></li>
             <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.logout') }}">logout</a></li>
           {% else %}
@@ -40,6 +42,9 @@
         {% for category, message in messages %}
           <p class="message message--{{ category }}">
             {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </p>
         {% endfor %}
       {% endif %}

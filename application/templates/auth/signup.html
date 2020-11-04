@@ -8,11 +8,11 @@
 
   <section class="form__container signup__page">
 
-    <h1 class="page__header-2">Esp2Eng!</h1>
+    <h1 class="page__header-2">Esp<span class="sans--serif">2</span>Eng<span class="sans--serif">!</span></h1>
 
     <h2 class="page__subheader">sign up</h2>
 
-    <form action="" method="POST">
+    <form action="{{ url_for('auth.sign_up') }}" method="POST">
 
       {{ form.csrf_token }}
       {{ form.username(class_="form__input", placeholder="Username", autofocus=true) }}
@@ -21,11 +21,11 @@
       {{ form.email(class_="form__input", placeholder="Enter Email") }}
       {{ form.password(class_="form__input passwd__field", placeholder="Enter Password") }}
       {{ form.confirm_password(class_="form__input passwd__field", placeholder="Re-Enter Password") }}
+      {{ form.submit(class_="bttn") }}
       <p class="form__agreement">By clicking Sign Up, I agree to the Esp2eng
       <a class="login__link anchor__link" href="{{ url_for('auth.terms_of_service') }}">terms of service</a> and 
       <a class="login__link anchor__link" href="{{ url_for('auth.privacy_policy') }}">privacy policy</a>.
       </p>
-      {{ form.submit(class_="bttn") }}
 
       <p>Already have an account? <a class="anchor__link" href="{{ url_for('auth.login') }}">login</a></p>
 

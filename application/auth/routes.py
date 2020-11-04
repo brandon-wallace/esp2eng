@@ -17,6 +17,7 @@ def sign_up():
         return redirect(url_for('auth.profile'))
 
     form = SignUpForm()
+    print('display form')
     if form.validate_on_submit():
         try:
             hashed_password = bcrypt.generate_password_hash(form.password.data
@@ -29,9 +30,9 @@ def sign_up():
             db.session.add(user)
             db.session.commit()
             flash('Account created successfully!', 'success')
-            return url_for('auth.login')
+            return redirect(url_for('auth.login'))
         except Exception:
-            flash('An error ocurred!', 'danger')
+            flash('An error ocurred!', 'fail')
             return redirect(url_for('auth.signup'))
     return render_template('auth/signup.html', form=form)
 
@@ -57,7 +58,7 @@ def login():
                 return redirect(url_for('auth.profile'))
             else:
                 flash('Login unsuccessful. Please check email/password.',
-                      'danger')
+                      'fail')
                 return redirect(url_for('auth.login'))
         except Exception as e:
             print(e)

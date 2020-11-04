@@ -10,6 +10,21 @@
 
     <h1 class="page__header-1">Esp<span class="sans--serif">2</span>Eng<span class="sans--serif">!</span></h1>
 
+    <div class="vocuabulary">
+
+      {% if words %}
+        {% for word in words %}
+          <div class="word">
+            <h2>{{ word.word_es }}</h2>
+            <p>{{ word.sentence1_es }}</p>
+            <p>{{ word.sentence1_en }}</p>
+            <p>{{ word.definition1_en }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
   </section>
 
 {% endblock %}
