@@ -17,3 +17,20 @@ let menuToggle = false;
         }
     });
 //}
+
+
+const showTranslation = document.querySelector('.show-translation-bttn');
+
+if (showTranslation) {
+
+    console.log(`Button is available`);
+
+    const showText = () => {
+        let sentences = [...document.querySelectorAll('.hidden')]
+        sentences.forEach(elem => elem.style.display = 'block');
+    }
+
+    showTranslation.addEventListener('click', showText);
+
+}
+

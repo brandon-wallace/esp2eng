@@ -308,6 +308,33 @@ footer {
     max-width: 800px;
 }
 
+.word__tile {
+    width: 100%;
+    max-width: 800px;
+    margin: 15px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #CCCCCC;
+}
+
+.word__title {
+    background-color: #DDDDDD;
+}
+
+.show-translation-bttn {
+    margin: 0 auto;
+    padding: .25rem 0;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
+
+.word__footer {
+}
+
 @media only screen and (min-width: 500px) {
     .page__header-2,
     .page__subheader {

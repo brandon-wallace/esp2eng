@@ -15,7 +15,7 @@
     <form action="{{ url_for('auth.login') }}" method="POST">
  
       {{ form.csrf_token }}
-      {{ form.email(class_="form__input", placeholder="Enter Email") }}
+      {{ form.email(class_="form__input", placeholder="Enter Email", autofocus=True) }}
       {{ form.password(class_="form__input passwd__field", placeholder="Enter Password") }}
       {{ form.submit(class_="bttn") }}
 

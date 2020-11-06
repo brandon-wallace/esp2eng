@@ -10,15 +10,33 @@
 
     <h1 class="page__header-1">Esp<span class="sans--serif">2</span>Eng<span class="sans--serif">!</span></h1>
 
-    <div class="vocuabulary">
+    <div class="words">
 
       {% if words %}
         {% for word in words %}
-          <div class="word">
-            <h2>{{ word.word_es }}</h2>
-            <p>{{ word.sentence1_es }}</p>
-            <p>{{ word.sentence1_en }}</p>
-            <p>{{ word.definition1_en }}</p>
+          <div class="word__tile">
+            <div class="word__content">
+              <div class="word__header">
+                <h2 class="word__title">{{ word.word_es }}</h2>
+              </div>
+              <div class="word__div">
+                <p class="sentence">{{ word.sentence1_es }}</p>
+                <p class="sentence hidden">{{ word.sentence1_en }}</p>
+              </div>
+              <div class="word__div">
+                <p class="sentence">{{ word.sentence2_es }}</p>
+                <p class="sentence hidden">{{ word.sentence2_en }}</p>
+              </div>
+              <p class="word-definition hidden">{{ word.definition1_en }}</p>
+              {#
+              <p class="word-definition hidden">{{ word.definition2_en if (word.definition2_en) }}</p>
+              <p class="word-definition hidden">{{ word.definition3_en if word.definition3_en }}</p>
+              <p class="word-definition hidden">{{ word.definition4_en if word.definition4_en }}</p>
+              #}
+              <div class="word__footer">
+                <button class="bttn show-translation-bttn" type="submit">show translation</button>
+              </div>
+            </div>
           </div>
         {% endfor %}
       {% endif %}
