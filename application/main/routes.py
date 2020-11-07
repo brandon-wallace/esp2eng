@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, flash
 from flask_login import login_required
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.sql import func
 from application import db
 from application.main import main
 from application.forms import AddEntryForm
@@ -11,7 +12,7 @@ from application.models import Word
 def index():
     '''Index route'''
 
-    words = Word.query.all()
+    words = Word.query.order_by(func.random())
     return render_template('main/index.html', words=words)
 
 

@@ -16,6 +16,7 @@ bs4 = "*"
 gunicorn = "*"
 flask-wtf = "*"
 email-validator = "*"
+flask-paginate = "*"
 
 [requires]
 python_version = "3.7"
