@@ -62,7 +62,7 @@
 
           <div class="footer__content">
 
-            {% if words.items %}
+            {% if words %}
               {% for page_num in words.iter_pages() %}
                 {% if page_num %}
                   <a class="footer__link" href="{{ url_for('main.index', page=page_num) }}">{{ page_num }}</a>

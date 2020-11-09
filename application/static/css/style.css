@@ -421,6 +421,10 @@ footer {
     }
 }
 
+.bttn--large {
+    height: 50px;
+}
+
 .header-2 {
     text-decoration: center;
 }
