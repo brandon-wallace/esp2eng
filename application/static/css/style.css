@@ -72,6 +72,7 @@ header {
     width: 100%;
     display: flex;
     position: relative;
+    background-color: #F7D800;
 }
 
 nav {
@@ -109,7 +110,7 @@ nav {
     width: 50px;
     height: 6px;
     border-radius: 5px;
-    background-color: var(--fg, #333333);
+    background-color: #333333;
     transition: all .1s ease-in-out;
 }
 
@@ -259,7 +260,7 @@ footer {
     left: 0;
     z-index: 9;
     flex-direction: column;
-    background-color: lightgray;
+    background-color: #F7D800;
     width: 100vw;
     height: 100vh;
 }
