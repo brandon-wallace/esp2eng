@@ -14,49 +14,71 @@
       <p style="color:#FC0000;text-align:center">Please enable Javascript</p>
     </noscript>
 
-    <header>
+    <article>
 
-      <div class="hamburger">
-        <div class="hamburger__button">
+      <header>
+
+        <div class="hamburger">
+          <div class="hamburger__button">
+          </div>
         </div>
-      </div>
 
-      <nav>
-        <ul class="menu">
-          <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
-          {% if current_user.is_authenticated %}
-            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.profile') }}">profile</a></li>
-            <li class="menu__item"><a class="menu__link" href="{{ url_for('main.add_word') }}">add word</a></li>
-            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.logout') }}">logout</a></li>
-          {% else %}
-            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
-            <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
-          {% endif %}
-        </ul>
-      </nav>
+        <nav>
+          <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
+            {% if current_user.is_authenticated %}
+              <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.profile') }}">profile</a></li>
+              <li class="menu__item"><a class="menu__link" href="{{ url_for('main.add_word') }}">add word</a></li>
+              <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.logout') }}">logout</a></li>
+            {% else %}
+              <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
+              <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
+            {% endif %}
+          </ul>
+        </nav>
 
-    </header>
+      </header>
 
-    {% with messages = get_flashed_messages(with_categories=True) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <p class="message message--{{ category }}">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </p>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-    
-    {% block content %}
+      {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <p class="message message--{{ category }}">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      
+      {% block content %}
 
-    {% endblock %}
+      {% endblock %}
 
-    <footer>
+      <footer>
 
-    </footer>
+        <nav class="footer__nav">
+
+          <div class="footer__content">
+
+            {% if words.items %}
+              {% for page_num in words.iter_pages() %}
+                {% if page_num %}
+                  <a class="footer__link" href="{{ url_for('main.index', page=page_num) }}">{{ page_num }}</a>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+          </div>
+
+        </nav>
+
+        <p class="footer__link">Created by <a class="footer__anchor" href="https://github.com/brandon-wallace">brandon wallace</a></p>
+  
+      </footer>
+
+      </article>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     

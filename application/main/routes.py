@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from flask_login import login_required
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql import func
@@ -12,8 +12,9 @@ from application.models import Word
 def index():
     '''Index route'''
 
-    words = Word.query.order_by(func.random())
-    return render_template('main/index.html', words=words)
+    page = request.args.get('page', 1, type=int)
+    words = Word.query.order_by(func.random()).paginate(page, per_page=5)
+    return render_template('main/index.html', words=words.items)
 
 
 @main.route('/add-word', methods=['GET', 'POST'])
