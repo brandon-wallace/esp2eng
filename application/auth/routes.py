@@ -1,8 +1,10 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import current_user, login_user, logout_user, login_required
+from sqlalchemy.sql import func
 from application import db, bcrypt
-from application.models import User
+from application.models import User, Word
 from application.forms import SignUpForm, LoginForm
+
 
 auth = Blueprint('auth', __name__,
                  template_folder='templates',
@@ -57,7 +59,7 @@ def login():
                 flash('Login successful!', 'success')
                 return redirect(url_for('auth.profile'))
             else:
-                flash('Login unsuccessful. Please check email/password.',
+                flash('Login unsuccessful. Check email/password.',
                       'fail')
                 return redirect(url_for('auth.login'))
         except Exception as e:
@@ -71,8 +73,10 @@ def login():
 def profile():
     '''User profile route'''
 
+    words = Word.query.order_by(func.random())
     user_initials = current_user.firstname[0] + current_user.lastname[0]
-    return render_template('auth/profile.html', user_initials=user_initials)
+    return render_template('auth/profile.html', words=words,
+                           user_initials=user_initials)
 
 
 @auth.route('/logout')

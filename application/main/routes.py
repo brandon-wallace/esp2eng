@@ -1,12 +1,16 @@
-from flask import render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required
 # from flask_paginate import Pagination, get_page_parameter
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql import func
 from application import db
-from application.main import main
+# from application.main import main
 from application.forms import AddEntryForm
 from application.models import Word
+
+main = Blueprint('main', __name__,
+                 template_folder='templates',
+                 static_folder='static')
 
 
 @main.route('/')

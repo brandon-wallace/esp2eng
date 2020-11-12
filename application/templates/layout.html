@@ -39,25 +39,34 @@
 
       </header>
 
-      {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <p class="message message--{{ category }}">
-              {{ message }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </p>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-      
-      {% block content %}
+      <main>
 
-      {% endblock %}
+        {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <p class="message message--{{ category }}">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        {% block content %}
+
+        {% endblock %}
+
+      </main>
 
       <footer>
 
+        <div class="footer__logo">
+            <img src="{{ url_for('static', filename='images/logo-w-500x500.png') }}">
+        </div>
+
+        {#
         <nav class="footer__nav">
 
           <div class="footer__content">
@@ -73,8 +82,9 @@
           </div>
 
         </nav>
+        #}
 
-        <p class="footer__link">Created by <a class="footer__anchor" href="https://github.com/brandon-wallace">brandon wallace</a></p>
+        <p class="footer__link">Created by <a class="footer__anchor" href="https://brandonwallace.cc">brandon wallace</a></p>
   
       </footer>
 
