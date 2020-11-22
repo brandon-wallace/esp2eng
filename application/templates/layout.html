@@ -2,12 +2,18 @@
 <html lang="en">
 
   <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="The place to learn Spanish.">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" media="screen,projection,tv" href="{{ url_for('static', filename='css/style.css') }}">
     <title>{% block title %}{% endblock %} : esp2eng.tk</title>
+
   </head>
+
   <body>
 
     <noscript>
@@ -24,7 +30,9 @@
         </div>
 
         <nav>
+
           <ul class="menu">
+
             <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
             {% if current_user.is_authenticated %}
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.profile') }}">profile</a></li>
@@ -34,7 +42,9 @@
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
             {% endif %}
+
           </ul>
+
         </nav>
 
       </header>
@@ -42,16 +52,22 @@
       <main>
 
         {% with messages = get_flashed_messages(with_categories=True) %}
+
           {% if messages %}
+
             {% for category, message in messages %}
+
               <p class="message message--{{ category }}">
                 {{ message }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </p>
+
             {% endfor %}
+
           {% endif %}
+
         {% endwith %}
         
         {% block content %}
@@ -60,29 +76,36 @@
 
       </main>
 
+      <div class="page__navigation">
+
+        {% if request.endpoint == 'auth.profile' %}
+        {% if words %}
+
+          {% for page_num in words.iter_pages() %}
+
+            {% if prev_url %}
+              <a href="{{ prev_url }}">back</a>
+            {% endif %}
+
+            {% if page_num %}
+              <a class="page__navigation__link" href="{{ url_for('auth.profile', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+              <p>...</p>
+            {% endif %}
+
+          {% endfor %}
+
+        {% endif %}
+        {% endif %}
+
+      </div>
+
       <footer>
 
         <div class="footer__logo">
             <img src="{{ url_for('static', filename='images/logo-w-500x500.png') }}">
         </div>
 
-        {#
-        <nav class="footer__nav">
-
-          <div class="footer__content">
-
-            {% if words %}
-              {% for page_num in words.iter_pages %}
-                {% if page_num %}
-                  <a class="footer__link" href="{{ url_for('main.index', page=page_num) }}">{{ page_num }}</a>
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-
-          </div>
-
-        </nav>
-        #}
 
         <p class="footer__link">Created by <a class="footer__anchor" href="https://brandonwallace.cc">brandon wallace</a></p>
   
