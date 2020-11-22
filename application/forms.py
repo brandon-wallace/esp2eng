@@ -13,7 +13,7 @@ class SignUpForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
     email = StringField('Email', validators=[InputRequired(), Email()])
     password = PasswordField('Password', validators=[InputRequired(),
-                             Length(min=6, max=32)])
+                             Length(min=4, max=32)])
     confirm_password = PasswordField('Re-Enter Password', validators=[
                                      InputRequired(), EqualTo('password')])
     submit = SubmitField('SIGN UP')
@@ -23,7 +23,13 @@ class SignUpForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError('Email already exists.')
-        return
+
+    def validate_username(self, username):
+        '''Check for existing username'''
+
+        user = User.query.filter_by(username=username.data).first()
+        if user:
+            raise ValidationError('Username already exists.')
 
 
 class LoginForm(FlaskForm):

@@ -9,9 +9,11 @@
     <div class="words">
 
       {% if words %}
-        {% for word in words %}
+
+        {% for word in words.items %}
 
           <div class="word__tile">
+
             <div class="word__content">
 
               <div class="word__header">
@@ -19,10 +21,13 @@
               </div>
 
             </div>
+
           </div>
 
         {% endfor %}
+
       {% endif %}
 
     </div>
+
 {% endblock %}
