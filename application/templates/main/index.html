@@ -11,17 +11,19 @@
     <div class="home__page__header">
 
       <h1 class="page__header-1">Esp<span class="sans--serif">2</span>Eng<span class="sans--serif">!</span></h1>
-      <h4 class="header-4">The Place to Learn Spanish</h4>
-      <p class="header-p">Read the sentences in Spanish and try to figure out the meaning from the context of the sentence before clicking the button to show the translation.</p>
+      <h2 class="header-4">The Place to Learn Spanish</h2>
+      <p class="header-p">Learn Spanish and increase your vocabulary at the same time. Try to figure out the meaning of the words from the context of the sentence.</p>
 
     </div>
 
     <div class="words">
 
       {% if words %}
+
         {% for word in words %}
 
           <div class="word__tile">
+
             <div class="word__content">
 
               <div class="word__header">
@@ -42,13 +44,13 @@
 
                 <p class="word-definition hidden">{{ word.definition1_en }}</p>
                 {% if word.definition2_en %}
-                  <p class="word-definition hidden">{{ word.definition2_en if (word.definition2_en) }}</p>
+                  <p class="word-definition hidden">{{ word.definition2_en }}</p>
                 {% endif %}
                 {% if word.definition3_en %}
-                  <p class="word-definition hidden">{{ word.definition3_en if word.definition3_en }}</p>
+                  <p class="word-definition hidden">{{ word.definition3_en }}</p>
                 {% endif %}
                 {% if word.definition4_en %}
-                  <p class="word-definition hidden">{{ word.definition4_en if word.definition4_en }}</p>
+                  <p class="word-definition hidden">{{ word.definition4_en }}</p>
                 {% endif %}
 
               </div>
@@ -58,9 +60,11 @@
               </div>
 
             </div>
+
           </div>
 
         {% endfor %}
+
       {% endif %}
 
     </div>
