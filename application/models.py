@@ -24,6 +24,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(32), nullable=False)
     account_created_on = db.Column(db.DateTime, nullable=False,
                                    default=datetime.utcnow)
+    words = db.relationship('Word', backref='author', lazy=True)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -47,3 +48,4 @@ class Word(db.Model):
     definition4_en = db.Column(db.String(50), nullable=True)
     date_added = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
