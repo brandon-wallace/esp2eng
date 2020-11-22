@@ -18,12 +18,14 @@ def index():
     '''Index route'''
 
     # page = request.args.get(get_page_parameter(), 1, type=int)
-    page = request.args.get('page', 1, type=int)
-    words = Word.query.order_by(func.random()).paginate(page, per_page=5)
+    # page = request.args.get('page', 1, type=int)
+    # words = Word.query.order_by(func.random()).paginate(page, per_page=5)
+    words = Word.query.order_by(func.random()).limit(2)
+    # words = Word.query.paginate(page=page, per_page=2)
     # words = Word.query.order_by(func.random())
     # pagination = Pagination(page=page, total=words.count(), search=False,
     #                         record_name="Test")
-    return render_template('main/index.html', words=words.items)
+    return render_template('main/index.html', words=words)
     # return render_template('main/index.html', pagination=pagination)
 
 
