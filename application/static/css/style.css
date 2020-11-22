@@ -29,7 +29,7 @@ article {
 }
 
 main {
-    padding-bottom: 300px;
+    width: 100%;
 }
 
 .home__page {
@@ -46,7 +46,7 @@ main {
 .home__page__header {
     margin: 0 auto;
     padding: 0 10px;
-    max-width: 800px;
+    max-width: 700px;
     box-sizing: border-box;
 }
 
@@ -279,6 +279,22 @@ form {
     border: 2px solid var(--fg, #333333);
 }
 
+.page__navigation {
+    display: flex;
+    height: 200px;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 300px;
+}
+
+.page__navigation__link {
+    padding: 1rem;
+    margin-right: 10px;
+    border: 3px solid dodgerblue;
+}
+
 footer {
     bottom: 0;
     width: 100%;
@@ -499,6 +515,7 @@ footer {
         width: unset;
         height: unset;
         position: unset;
+        padding: 0;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
             -ms-flex-direction: row;

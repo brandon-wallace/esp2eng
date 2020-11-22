@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_user, logout_user, login_required
-from sqlalchemy.sql import func
+# from sqlalchemy.sql import func
 from application import db, bcrypt
 from application.models import User, Word
 from application.forms import SignUpForm, LoginForm
@@ -19,7 +19,7 @@ def sign_up():
         return redirect(url_for('auth.profile'))
 
     form = SignUpForm()
-    print('display form')
+
     if form.validate_on_submit():
         try:
             hashed_password = bcrypt.generate_password_hash(form.password.data
@@ -62,8 +62,8 @@ def login():
                 flash('Login unsuccessful. Check email/password.',
                       'fail')
                 return redirect(url_for('auth.login'))
-        except Exception as e:
-            print(e)
+        except Exception:
+            flash('An error has occurred', 'fail')
             return redirect(url_for('auth.login'))
     return render_template('auth/login.html', form=form)
 
@@ -73,7 +73,10 @@ def login():
 def profile():
     '''User profile route'''
 
-    words = Word.query.order_by(func.random())
+    page = request.args.get('page', 1, type=int)
+    words = Word.query.paginate(page=page, per_page=4)
+
+    # words = Word.query.order_by(func.random())
     user_initials = current_user.firstname[0] + current_user.lastname[0]
     return render_template('auth/profile.html', words=words,
                            user_initials=user_initials)
