@@ -17,6 +17,7 @@ gunicorn = "*"
 flask-wtf = "*"
 email-validator = "*"
 flask-paginate = "*"
+flask-migrate = "*"
 
 [requires]
 python_version = "3.7"
