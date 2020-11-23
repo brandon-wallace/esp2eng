@@ -1,5 +1,8 @@
 // application/static/js/script.js
 
+
+// HAMBURGER MENU
+
 const hamburgerButton = document.querySelector('.hamburger');
 const navigation = document.querySelector('nav');
 
@@ -19,50 +22,21 @@ if (window.innerWidth < 750) {
 }
 
 
+// SHOW TRANSLATION BUTTON
+
 const showTranslation = document.querySelectorAll('.show-translation-bttn');
 
-
-/*
 if (showTranslation) {
 
-    console.log(`Button is available`);
-
     const showText = () => {
-        let sentences = [...document.querySelectorAll('.hidden')]
-        sentences.forEach(elem => elem.style.display = 'block');
+        let sentence = document.querySelectorAll('.hidden');
+        for (let i = 0; i < 3; i++) {
+            sentence[i].style.display = 'block';
+        }
     }
 
-    showTranslation.addEventListener('click', showText);
+    for (let i = 0; i < showTranslation.length; i++) {  
+        showTranslation[i].addEventListener('click', showText);
+    } 
 
 }
-*/
-
-const whichButton = (event) => {
-    const parentN = event.target.parentNode;
-    console.log(parentN);
-}
-
-showTranslation.forEach(bttn => {
-    bttn.addEventListener('click', whichButton)
-});
-
-//const tileImage = document.querySelectorAll('.tile-img');
-//
-//
-//const openModal = (event) => {
-//    const modalImage = event.target.alt;
-//    document.querySelector('.'+modalImage).style.display = 'flex';
-//}
-//
-//
-//tileImage.forEach(tile => {
-//    tile.addEventListener('click', openModal);
-//});
-//
-//
-//const closeModal = () => {
-//    const modals = document.querySelectorAll('.modal');
-//    for (let i = 0; i < modals.length; i++) {
-//        modals[i].style.display = 'none';
-//    }
-//}
