@@ -20,7 +20,9 @@
       <p style="color:#FC0000;text-align:center">Please enable Javascript</p>
     </noscript>
 
-    <article>
+    <div class="page">
+
+    <!-- START header -->
 
       <header>
 
@@ -38,6 +40,11 @@
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.profile') }}">profile</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('main.add_word') }}">add word</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.logout') }}">logout</a></li>
+              <div class="menu__user__initials">
+                <span class="initials">
+                {{ user_initials }}
+                </span>
+              </div>
             {% else %}
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
@@ -48,6 +55,10 @@
         </nav>
 
       </header>
+
+      <!-- END header -->
+
+      <!-- START main -->
 
       <main>
 
@@ -74,44 +85,56 @@
 
         {% endblock %}
 
-      </main>
-
-      <div class="page__navigation">
 
         {% if request.endpoint == 'auth.profile' %}
-        {% if words %}
 
-          {% for page_num in words.iter_pages() %}
+          <div class="page__navigation">
 
-            {% if prev_url %}
-              <a href="{{ prev_url }}">back</a>
+            {% if words %}
+
+              {% for page_num in words.iter_pages() %}
+
+                {% if prev_url %}
+                  <a href="{{ prev_url }}">back</a>
+                {% endif %}
+
+                {% if page_num %}
+                  <a class="page__navigation__link" href="{{ url_for('auth.profile', page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                  <p>...</p>
+                {% endif %}
+
+              {% endfor %}
+
             {% endif %}
 
-            {% if page_num %}
-              <a class="page__navigation__link" href="{{ url_for('auth.profile', page=page_num) }}">{{ page_num }}</a>
-            {% else %}
-              <p>...</p>
-            {% endif %}
-
-          {% endfor %}
+          </div>
 
         {% endif %}
-        {% endif %}
 
-      </div>
+      </main>
+
+      <!-- END main -->
+
+      <!-- START footer -->
 
       <footer>
 
-        <div class="footer__logo">
+        <div class="footer__container">
+
+          <div class="footer__logo">
             <img src="{{ url_for('static', filename='images/logo-w-500x500.png') }}">
+          </div>
+
+          <p class="footer__link">Created by <a class="footer__anchor" href="https://brandonwallace.cc">brandon wallace</a></p>
+
         </div>
-
-
-        <p class="footer__link">Created by <a class="footer__anchor" href="https://brandonwallace.cc">brandon wallace</a></p>
   
       </footer>
 
-      </article>
+    <!-- END footer -->
+
+    </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     

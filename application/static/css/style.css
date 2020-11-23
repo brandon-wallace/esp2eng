@@ -18,29 +18,19 @@ body {
 
 body {
     margin: 0;
-    color: var(--fg, #DDDDDD);
+    overflow-x: hidden;
     font-family: monospace, monospace;
-    background-color: var(--bg, #333333);
 }
 
-article {
+.page {
     min-height: 100%;
     position: relative;
 }
 
 main {
-    width: 100%;
-}
-
-.home__page {
-    width: 100%;
-    height: 100%;
-    padding-bottom: 200px;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #FDFDFD), color-stop(50%, #FF4040));
-    background: -o-linear-gradient(top, #FDFDFD 50%, #FF4040 50%);
-    background: linear-gradient(to bottom, #FDFDFD 50%, #FF4040 50%);
+    padding-bottom: 250px;
+    background: linear-gradient(#E66465, #9198E5);
+    background: linear-gradient(#91BEE5, #FFFFFF);
 }
 
 .home__page__header {
@@ -52,12 +42,6 @@ main {
 
 .header-p {
     margin-bottom: 0;
-}
-
-.login__page {
-}
-
-.signup__page {
 }
 
 a {
@@ -286,7 +270,6 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    padding-bottom: 300px;
 }
 
 .page__navigation__link {
@@ -299,19 +282,26 @@ footer {
     bottom: 0;
     width: 100%;
     display: flex;
-    height: 300px;
+    height: 250px;
     color: #FFFFFF;
+    position: absolute;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    position: absolute;
     background-color: dodgerblue;
+}
+
+.footer__container {
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
 }
 
 .footer__logo {
     width: 100%;
     height: 100%;
     display: flex;
+    max-height: 215px;
     align-items: center;
     justify-content: center;
     align-self: flex-start;
@@ -326,6 +316,7 @@ footer {
 .footer__link {
     margin: 0;
     text-align: center;
+    align-self: flex-end;
 }
 
 .footer__anchor {
@@ -370,6 +361,26 @@ footer {
     text-decoration: underline;
 }
 
+.menu__user__initials {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    font-size: 2.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.initials {
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+    line-height: 80px;
+    text-align: center;
+    letter-spacing: 3px;
+    background-color: #333333;
+    text-transform: uppercase;
+}
+
 .page__header-1 {
     color: #1DE800;
     font-size: 5rem;
@@ -411,6 +422,7 @@ footer {
 
 .header-4 {
     margin-top: 1rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -429,27 +441,46 @@ footer {
 }
 
 .word__div {
-    padding: 0 .5rem;
+    padding: 0 1rem;
     border-radius: 4px;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
     border: 2px solid green;
     background-color: #B0FBB0;
 }
 
 .word__tile {
     width: 100%;
-    padding: .5rem;
+    padding: 1rem;
     max-width: 800px;
-    margin: 15px auto;
     border-radius: 4px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    background-color: #CCCCCC;
     border: 3px solid purple;
+    background-color: #ECECEC;
+    box-shadow: 5px 5px purple;
+    margin: 1rem auto 2rem auto;
 }
 
 .word__title {
     margin: 8px 0;
+}
+
+.word__tile:nth-child(2) {
+    box-shadow: 0 0 #777777;
+    border: 3px solid #444444;
+    color: hsla(0, 0%, 0%, 0.3);
+    background-color: #DDDDDD;
+}
+
+.word__tile:nth-child(2) h2 {
+    color: hsla(0, 0%, 0%, 0.3);
+}
+
+.word__tile:nth-child(2) .word__div,
+.word__tile:nth-child(2) button {
+    border: 3px solid #99A099;
+    background-color: #CCCCCC;
+    color: hsla(0, 0%, 0%, 0.3);
 }
 
 .word-definitions {
@@ -480,6 +511,10 @@ footer {
     border-radius: 4px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+.sentence {
+    line-height: 1.5;
 }
 
 .hidden {
@@ -533,7 +568,18 @@ footer {
     }
     footer {
         flex-direction: row;
-        line-height: 300px;
+    }
+    .footer__container {
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        box-sizing: border-box;
+        align-self: flex-start;
+        justify-content: space-between;
+    }
+    .footer__logo {
+        max-height: none; 
     }
 }
 
@@ -543,7 +589,6 @@ footer {
         display: -ms-flexbox;
         display: flex;
     }
-
     .page__header-1 {
         font-size: 7rem;
     }
@@ -564,7 +609,6 @@ footer {
 
 .header-2 {
     text-align: center;
-    margin-top: 1rem;
 }
 
 .page__subheader {
