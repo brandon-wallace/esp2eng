@@ -502,6 +502,8 @@ footer {
             box-sizing: border-box;
     margin: .25rem 0;
     border: 2px solid green;
+    background-color: #FFFFFF;
+    font-weight: bold;
 }
 
 .show-translation-bttn {
@@ -519,7 +521,6 @@ footer {
 
 .hidden {
     display: none;
-    color: #777777;
 }
 
 .word__footer {
