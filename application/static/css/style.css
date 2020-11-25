@@ -28,7 +28,7 @@ body {
 }
 
 main {
-    padding-bottom: 250px;
+    padding: 8px 0 250px 0;
     background: linear-gradient(#E66465, #9198E5);
     background: linear-gradient(#91BEE5, #FFFFFF);
 }
@@ -168,14 +168,20 @@ nav {
 .message {
     width: 100%;
     border: solid;
+    display: flex;
     margin: 0 auto;
     max-width: 520px;
     font-weight: bold;
-    line-height: 40px;
     border-radius: 4px;
     text-align: center;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+.message__text {
+    flex: 2;
+    margin: 8px;
+    text-align: center;
 }
 
 .message--fail {
@@ -515,6 +521,11 @@ footer {
             box-sizing: border-box;
 }
 
+.close {
+   cursor: pointer;
+   font-size: 2rem;
+}
+
 .sentence {
     line-height: 1.5;
 }
@@ -524,6 +535,30 @@ footer {
 }
 
 .word__footer {
+}
+
+.underline:hover {
+    text-decoration: underline;
+}
+
+.bttn--large {
+    height: 50px;
+}
+
+.header-2 {
+    text-align: center;
+}
+
+.page__subheader {
+    margin: 8px 10px;
+}
+
+.sans--serif {
+    font-family: sans-serif;
+}
+
+.anchor__link {
+    text-decoration: underline;
 }
 
 @media only screen and (min-width: 500px) {
@@ -602,24 +637,4 @@ footer {
     .footer__logo {
         width: unset;
     }
-}
-
-.bttn--large {
-    height: 50px;
-}
-
-.header-2 {
-    text-align: center;
-}
-
-.page__subheader {
-    margin: 8px 10px;
-}
-
-.sans--serif {
-    font-family: sans-serif;
-}
-
-.anchor__link {
-    text-decoration: underline;
 }

@@ -71,12 +71,12 @@
 
             {% for category, message in messages %}
 
-              <p class="message message--{{ category }}">
-                {{ message }}
+              <div class="message message--{{ category }}">
+                <p class="message__text">{{ message }}</p>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                  &times;
                 </button>
-              </p>
+              </div>
 
             {% endfor %}
 

@@ -40,3 +40,14 @@ if (showTranslation) {
     } 
 
 }
+
+
+// CLOSE FLASH MESSAGES.
+
+const closeMessageButton = document.querySelector('.close');
+
+if (closeMessageButton) {
+    closeMessageButton.addEventListener('click', () => {
+        document.querySelector('.message').remove();
+    });
+}
