@@ -89,23 +89,27 @@
         {% endblock %}
 
 
-        {% if request.endpoint == 'auth.profile' %}
+        {% if request.endpoint == 'main.vocabulary' %}
 
           <div class="page__navigation">
 
             {% if words %}
 
-              {% for page_num in words.iter_pages() %}
-
-                {% if prev_url %}
-                  <a href="{{ prev_url }}">back</a>
+                {% if words.has_prev %}
+                  <a href="{{ url_for('main.vocabulary', page=words.prev_num) }}">back</a>
                 {% endif %}
 
+              {% for page_num in words.iter_pages() %}
+
                 {% if page_num %}
-                  <a class="page__navigation__link" href="{{ url_for('auth.profile', page=page_num) }}">{{ page_num }}</a>
+                  <a class="page__navigation__link" href="{{ url_for('main.vocabulary', page=page_num) }}">{{ page_num }}</a>
                 {% endif %}
 
               {% endfor %}
+
+                {% if words.has_next %}
+                  <a href="{{ url_for('main.vocabulary', page=words.next_num) }}">next</a>
+                {% endif %}
 
             {% endif %}
 
