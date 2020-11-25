@@ -1,0 +1,70 @@
+{# application/templates/main/word.html #}
+
+{% extends "layout.html" %}
+
+{% block title %}Vocabulary Word{% endblock %}
+
+{% block content %}
+
+  <section class="home__page">
+
+    <div class="home__page__header">
+
+      <h1 class="page__header-1">Esp<span class="sans--serif">2</span>Eng<span class="sans--serif">!</span></h1>
+      <h2 class="header-4">The Place to Learn Spanish</h2>
+      <p class="header-p">Learn Spanish and increase your vocabulary at the same time. Try to figure out the meaning of the words from the context of the sentence.</p>
+
+    </div>
+
+    <div class="words">
+
+      {% if word %}
+
+        <div class="word__tile">
+
+          <div class="word__content">
+
+            <div class="word__header">
+              <h2 class="word__title">{{ word.word_es }}</h2>
+            </div>
+
+            <div class="word__div">
+              <p class="sentence">{{ word.sentence1_es }}</p>
+              <p class="sentence hidden">{{ word.sentence1_en }}</p>
+            </div>
+
+            <div class="word__div">
+              <p class="sentence">{{ word.sentence2_es }}</p>
+              <p class="sentence hidden">{{ word.sentence2_en }}</p>
+            </div>
+
+            <div class="word-definitions">
+
+              <p class="word-definition hidden">{{ word.definition1_en }}</p>
+              {% if word.definition2_en %}
+                <p class="word-definition hidden">{{ word.definition2_en }}</p>
+              {% endif %}
+              {% if word.definition3_en %}
+                <p class="word-definition hidden">{{ word.definition3_en }}</p>
+              {% endif %}
+              {% if word.definition4_en %}
+                <p class="word-definition hidden">{{ word.definition4_en }}</p>
+              {% endif %}
+
+            </div>
+
+            <div class="word__footer">
+              <button class="bttn show-translation-bttn" type="submit">show translation</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      {% endif %}
+
+    </div>
+
+  </section>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 # from flask_paginate import Pagination, get_page_parameter
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql import func
@@ -56,7 +56,30 @@ def add_word():
         except IntegrityError:
             db.session.rollback()
             return redirect(url_for('main.add_word', _external=True))
-    return render_template('main/add_word.html', form=form)
+    user_initials = current_user.firstname[0] + current_user.lastname[0]
+    return render_template('main/add_word.html', form=form,
+                           user_initials=user_initials)
+
+
+@main.route('/word/<int:word_id>', methods=['GET', 'POST'])
+@login_required
+def display_word(word_id):
+    '''Display a vocabulary word'''
+
+    word = Word.query.get_or_404(word_id)
+    return render_template('main/word.html', word=word)
+
+
+@main.route('/vocabulary')
+@login_required
+def vocabulary():
+    '''Vocabulary route'''
+
+    page = request.args.get('page', 1, type=int)
+    words = Word.query.paginate(page=page, per_page=4)
+    user_initials = current_user.firstname[0] + current_user.lastname[0]
+    return render_template('main/vocabulary.html', words=words,
+                           user_initials=user_initials)
 
 
 @main.app_errorhandler(404)

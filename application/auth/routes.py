@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import current_user, login_user, logout_user, login_required
 # from sqlalchemy.sql import func
 from application import db, bcrypt
-from application.models import User, Word
+from application.models import User
 from application.forms import SignUpForm, LoginForm
 
 
@@ -73,13 +73,9 @@ def login():
 def profile():
     '''User profile route'''
 
-    page = request.args.get('page', 1, type=int)
-    words = Word.query.paginate(page=page, per_page=4)
-
     # words = Word.query.order_by(func.random())
     user_initials = current_user.firstname[0] + current_user.lastname[0]
-    return render_template('auth/profile.html', words=words,
-                           user_initials=user_initials)
+    return render_template('auth/profile.html', user_initials=user_initials)
 
 
 @auth.route('/logout')
