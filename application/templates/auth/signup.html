@@ -1,5 +1,7 @@
 {# application/templates/main/index.html #}
 
+{% from 'macros.html' import displayField %}
+
 {% extends "layout.html" %}
 
 {% block title %}Sign Up{% endblock %}
@@ -15,19 +17,27 @@
     <form action="{{ url_for('auth.sign_up') }}" method="POST">
 
       {{ form.csrf_token }}
-      {{ form.username(class_="form__input", placeholder="Username", autofocus=true) }}
-      {{ form.firstname(class_="form__input", placeholder="First Name") }}
-      {{ form.lastname(class_="form__input", placeholder="Last Name") }}
-      {{ form.email(class_="form__input", placeholder="Enter Email") }}
-      {{ form.password(class_="form__input passwd__field", placeholder="Enter Password") }}
-      {{ form.confirm_password(class_="form__input passwd__field", placeholder="Re-Enter Password") }}
+      {{ displayField(form.username, "Username*", autofocus=true) }}
+      {{ displayField(form.firstname, "First Name*") }}
+      {{ displayField(form.lastname, "Last Name*") }}
+      {{ displayField(form.email, "Enter Email*") }}
+      {{ displayField(form.password, "Enter Password*", class="form__input passwd__field") }}
+      {{ displayField(form.confirm_password, "Re-Enter Password*", class="form__input passwd__field") }}
+      {#
+      <p>
+        {% for error in form.recaptcha.errors %}
+            {{ error }}
+        {% endfor %}
+        {{ form.recaptcha }}
+      </p>
+      #}
       {{ form.submit(class_="bttn bttn--large") }}
       <p class="form__agreement">By clicking Sign Up, I agree to the Esp2eng
       <a class="login__link anchor__link" href="{{ url_for('auth.terms_of_service') }}">Terms of Service</a> and 
       <a class="login__link anchor__link" href="{{ url_for('auth.privacy_policy') }}">Privacy Policy</a>.
       </p>
 
-      <p>Already have an account? <a class="anchor__link" href="{{ url_for('auth.login') }}">login</a></p>
+      <p>Already have an account? <a class="anchor__link" href="{{ url_for('auth.login') }}">Login</a></p>
 
     </form>
 
