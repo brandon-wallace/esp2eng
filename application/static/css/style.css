@@ -258,6 +258,7 @@ form {
 .bttn {
     border: 0;
     width: 100%;
+    height: 40px;
     display: block;
     color: #FFFFFF;
     font-weight: bold;
@@ -331,7 +332,6 @@ footer {
 
 .menu {
     margin: 0;
-    padding: 1rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -355,8 +355,8 @@ footer {
 
 .menu__item {
     margin: 0;
-    padding: 2rem;
-    font-size: 3rem;
+    padding: 1rem;
+    font-size: 2.5rem;
 }
 
 .menu__link {
@@ -561,6 +561,24 @@ footer {
     text-decoration: underline;
 }
 
+@media only screen and (orientation: landscape) {
+    main {
+        min-height: 100vh;
+    }
+    .menu {
+        top: 80px;
+        padding: 0;
+        justify-content: flex-start;
+    }
+    .menu__item {
+        padding: .5rem;
+        font-size: 1.5rem;
+    }
+    .menu__user__initials {
+        margin-top: 20px;
+    }
+}
+
 @media only screen and (min-width: 500px) {
     .page__header-2,
     .page__subheader {
@@ -593,11 +611,12 @@ footer {
                 flex-direction: row;
     }
     .menu__link {
+        padding: .5rem;
         font-size: 1.5rem;
     }
 
     .menu__item {
-        padding: 0;
+        font-size: 2.5rem;
     }
     .word-definition {
         margin: .25rem;
