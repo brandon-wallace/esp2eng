@@ -250,6 +250,10 @@ form {
     border: 2px solid var(--fg, #333333);
 }
 
+.form__error {
+    color: #FC0000;
+}
+
 .password__field {
     letter-spacing: 4px;
     font-size: 1.5rem;
