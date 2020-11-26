@@ -95,9 +95,9 @@
 
             {% if words %}
 
-                {% if words.has_prev %}
-                  <a href="{{ url_for('main.vocabulary', page=words.prev_num) }}">back</a>
-                {% endif %}
+              {% if words.has_prev %}
+                  <a href="{{ url_for('main.vocabulary', page=words.prev_num) }}">&#171;</a>
+              {% endif %}
 
               {% for page_num in words.iter_pages() %}
 
@@ -107,9 +107,9 @@
 
               {% endfor %}
 
-                {% if words.has_next %}
-                  <a href="{{ url_for('main.vocabulary', page=words.next_num) }}">next</a>
-                {% endif %}
+              {% if words.has_next %}
+                  <a href="{{ url_for('main.vocabulary', page=words.next_num) }}">&#187;</a>
+              {% endif %}
 
             {% endif %}
 
@@ -144,4 +144,5 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     
   </body>
+
 </html>
