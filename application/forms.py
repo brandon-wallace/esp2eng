@@ -1,8 +1,9 @@
-from application.models import User
 from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, SubmitField)
 from wtforms.validators import (InputRequired, Email, EqualTo,
                                 Length, ValidationError)
+from flask_wtf.recaptcha import RecaptchaField
+from application.models import User
 
 
 class SignUpForm(FlaskForm):
@@ -13,9 +14,10 @@ class SignUpForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
     email = StringField('Email', validators=[InputRequired(), Email()])
     password = PasswordField('Password', validators=[InputRequired(),
-                             Length(min=4, max=32)])
+                             Length(min=8, max=32)])
     confirm_password = PasswordField('Re-Enter Password', validators=[
                                      InputRequired(), EqualTo('password')])
+    recaptcha = RecaptchaField()
     submit = SubmitField('SIGN UP')
 
     def validate_email(self, email):

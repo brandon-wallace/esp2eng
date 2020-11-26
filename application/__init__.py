@@ -24,6 +24,8 @@ def create_app():
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # app.config['RECAPTCHA_PUBLIC_KEY'] = '6LeYIbsSAACRIxA7wvXjIE411PfdB2gt2J'
+    # app.config['RECAPTCHA_PRIVATE_KEY'] = '6LeYIbsSAAAJezFt_hSTo0YtyeFG-Jgtu'
 
     db.init_app(app)
     migrate.init_app(app, db)

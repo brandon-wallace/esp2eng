@@ -19,7 +19,6 @@ def sign_up():
         return redirect(url_for('auth.profile'))
 
     form = SignUpForm()
-
     if form.validate_on_submit():
         try:
             hashed_password = bcrypt.generate_password_hash(form.password.data
@@ -34,6 +33,7 @@ def sign_up():
             flash('Account created successfully!', 'success')
             return redirect(url_for('auth.login'))
         except Exception:
+            db.session.rollback()
             flash('An error ocurred!', 'fail')
             return redirect(url_for('auth.signup'))
     return render_template('auth/signup.html', form=form)

@@ -76,7 +76,7 @@ def vocabulary():
     '''Vocabulary route'''
 
     page = request.args.get('page', 1, type=int)
-    words = Word.query.paginate(page=page, per_page=4)
+    words = Word.query.paginate(page=page, per_page=2)
     user_initials = current_user.firstname[0] + current_user.lastname[0]
     return render_template('main/vocabulary.html', words=words,
                            user_initials=user_initials)
