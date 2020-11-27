@@ -73,9 +73,7 @@
 
               <div class="message message--{{ category }}">
                 <p class="message__text">{{ message }}</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  &times;
-                </button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
               </div>
 
             {% endfor %}
@@ -88,7 +86,6 @@
 
         {% endblock %}
 
-
         {% if request.endpoint == 'main.vocabulary' %}
 
           <div class="page__navigation">
@@ -96,7 +93,7 @@
             {% if words %}
 
               {% if words.has_prev %}
-                  <a href="{{ url_for('main.vocabulary', page=words.prev_num) }}">&#171;</a>
+                <a class="page__navigation__link arrow" href="{{ url_for('main.vocabulary', page=words.prev_num) }}">&#171;</a>
               {% endif %}
 
               {% for page_num in words.iter_pages() %}
@@ -108,7 +105,7 @@
               {% endfor %}
 
               {% if words.has_next %}
-                  <a href="{{ url_for('main.vocabulary', page=words.next_num) }}">&#187;</a>
+                <a class="page__navigation__link arrow"  href="{{ url_for('main.vocabulary', page=words.next_num) }}">&#187;</a>
               {% endif %}
 
             {% endif %}
