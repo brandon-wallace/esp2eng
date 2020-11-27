@@ -30,11 +30,10 @@ if (showTranslation) {
 
     const showText = () => {
         let sentence = document.querySelectorAll('.hidden');
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < sentence.length; i++) {
             sentence[i].style.display = 'block';
         }
     }
-
     for (let i = 0; i < showTranslation.length; i++) {  
         showTranslation[i].addEventListener('click', showText);
     } 
