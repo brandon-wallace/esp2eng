@@ -17,8 +17,8 @@
     <form action="{{ url_for('auth.login') }}" method="POST">
  
       {{ form.csrf_token }}
-      {{ displayField(form.email, "Enter Email*", autofocus=true) }}
-      {{ displayField(form.password, "Enter Password*", class="form__input passwd__field") }}
+      {{ displayField(form.email, "Enter Email", autofocus=true) }}
+      {{ displayField(form.password, "Enter Password", class="form__input passwd__field") }}
       {{ form.submit(class_="bttn bttn--large") }}
 
     </form>
