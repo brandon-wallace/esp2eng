@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}My Words{% endblock %}
+
+{% block content %}
+
+    <div class="words">
+
+      {% if words %}
+
+        {% for word in words %}
+
+          <div class="word__list">
+
+            <div class="word__content">
+
+              <div class="word__header">
+                <h2 class="word__title"><a class="underline" href="{{ url_for('main.display_word', word_id=word.id) }}">{{ word.word_es }}</a></h2>
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+
+      {% endif %}
+
+    </div>
+
+{% endblock %}

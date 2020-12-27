@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     words = db.relationship('Word', backref='author', lazy=True)
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return (f'<User {self.username}>')
 
 
 class Word(db.Model):
@@ -49,3 +49,6 @@ class Word(db.Model):
     date_added = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return (f'<Word {self.id}>')

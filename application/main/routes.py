@@ -47,7 +47,8 @@ def add_word():
                         definition1_en=form.definition1_en.data,
                         definition2_en=form.definition2_en.data,
                         definition3_en=form.definition3_en.data,
-                        definition4_en=form.definition4_en.data)
+                        definition4_en=form.definition4_en.data,
+                        user_id=current_user.id)
             db.session.add(word)
             db.session.commit()
             db.session.remove()
@@ -80,6 +81,14 @@ def vocabulary():
     user_initials = current_user.firstname[0] + current_user.lastname[0]
     return render_template('main/vocabulary.html', words=words,
                            user_initials=user_initials)
+
+
+@main.route('/mywords')
+@login_required
+def display_user_words():
+
+    words = Word.query.filter(Word.user_id == current_user.id).all()
+    return render_template('main/mywords.html', words=words)
 
 
 @main.app_errorhandler(404)

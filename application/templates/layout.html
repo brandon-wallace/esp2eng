@@ -38,6 +38,7 @@
             <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
             {% if current_user.is_authenticated %}
               <li class="menu__item"><a class="menu__link" href="{{ url_for('main.vocabulary') }}">vocabulary</a></li>
+              <li class="menu__item"><a class="menu__link" href="{{ url_for('main.display_user_words') }}">my words</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('main.add_word') }}">add word</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.profile') }}">profile</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.logout') }}">logout</a></li>
