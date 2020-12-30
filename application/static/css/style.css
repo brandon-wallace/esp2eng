@@ -221,10 +221,11 @@ form {
 
 .form__div {
     padding: 1rem;
+    border-radius: 4px;
     margin-bottom: 1rem;
+    border: 3px solid purple;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    border: 2px solid var(--fg, #333333);
 }
 
 .form__div label {
@@ -245,9 +246,9 @@ form {
     font-weight: bold;
     font-family: inherit;
     margin-bottom: .5rem;
+    border: 2px solid purple;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    border: 2px solid var(--fg, #333333);
 }
 
 .form__error {
