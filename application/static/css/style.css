@@ -33,6 +33,13 @@ main {
     background: linear-gradient(#91BEE5, #FFFFFF);
 }
 
+.home__page {
+    background-image: url('../images/laura-d-vargas-0BdkaaVTcB4-unsplash-blue.png'), linear-gradient(#91BEE5, #FFFFFF);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    min-height: 70vh;
+}
+
 .home__page__header {
     margin: 0 auto;
     padding: 0 10px;
