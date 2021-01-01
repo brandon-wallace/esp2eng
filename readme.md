@@ -6,8 +6,5 @@
 
 ![screenshot1](application/static/images/screenshot.png)
 
-```
 Index page photo by Laura D Vargas on Unsplash.
 https://unsplash.com/@laurazarateln?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText
-
-```
