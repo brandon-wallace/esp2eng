@@ -63,3 +63,26 @@ class AddEntryForm(FlaskForm):
     definition3_en = StringField('English Definition 3')
     definition4_en = StringField('English Definition 4')
     submit = SubmitField('ADD ENTRY')
+
+
+class UpdateEntryForm(FlaskForm):
+    '''Update entry form'''
+
+    word_es = StringField('Add Spanish Vocabulary Word*',
+                          validators=[InputRequired()])
+    sentence1_es = StringField('Spanish Example Sentence 1*',
+                               validators=[InputRequired()])
+    sentence1_en = StringField('English Translation*',
+                               validators=[InputRequired()])
+    sentence2_es = StringField('Spanish Example Sentence 2*',
+                               validators=[InputRequired()])
+    sentence2_en = StringField('English Translation*',
+                               validators=[InputRequired()])
+    sentence3_es = StringField('Spanish Example Sentence 3')
+    sentence3_en = StringField('English Translation')
+    definition1_en = StringField('English Definition 1*',
+                                 validators=[InputRequired()])
+    definition2_en = StringField('English Definition 2')
+    definition3_en = StringField('English Definition 3')
+    definition4_en = StringField('English Definition 4')
+    submit = SubmitField('SAVE')

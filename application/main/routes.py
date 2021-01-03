@@ -1,11 +1,12 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import (Blueprint, render_template, redirect,
+                   url_for, flash, request, abort)
 from flask_login import login_required, current_user
 # from flask_paginate import Pagination, get_page_parameter
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql import func
 from application import db
 # from application.main import main
-from application.forms import AddEntryForm
+from application.forms import AddEntryForm, UpdateEntryForm
 from application.models import Word
 
 main = Blueprint('main', __name__,
@@ -60,6 +61,55 @@ def add_word():
     user_initials = current_user.firstname[0] + current_user.lastname[0]
     return render_template('main/add_word.html', form=form,
                            user_initials=user_initials)
+
+
+@main.route('/word/update/<int:word_id>', methods=['GET', 'POST'])
+@login_required
+def update_word(word_id):
+    '''Update a word'''
+
+    word = Word.query.get_or_404(word_id)
+    if word.author != current_user:
+        abort(403)
+    form = UpdateEntryForm()
+    if request.method == 'GET':
+        form.word_es.data = word.word_es
+        form.sentence1_es.data = word.sentence1_es
+        form.sentence1_en.data = word.sentence1_en
+        form.sentence2_es.data = word.sentence2_es
+        form.sentence2_en.data = word.sentence2_en
+        form.sentence3_es.data = word.sentence3_es
+        form.sentence3_en.data = word.sentence3_en
+        form.definition1_en.data = word.definition1_en
+        form.definition2_en.data = word.definition2_en
+        form.definition3_en.data = word.definition3_en
+        form.definition4_en.data = word.definition4_en
+    elif form.validate_on_submit():
+        try:
+            word_es = form.word_es.data
+            sentence1_es = form.sentence1_es.data
+            sentence1_en = form.sentence1_en.data
+            sentence2_es = form.sentence2_es.data
+            sentence2_en = form.sentence2_en.data
+            sentence3_es = form.sentence3_es.data
+            sentence3_en = form.sentence3_en.data
+            definition1_en = form.definition1_en.data
+            definition2_en = form.definition2_en.data
+            definition3_en = form.definition3_en.data
+            definition4_en = form.definition4_en.data
+            db.session.commit()
+            db.session.remove()
+            flash('Word updated successfully', 'success')
+            return redirect(url_for('main.display_word',
+                            word_id=word_id, _external=True))
+        except IntegrityError:
+            db.session.rollback()
+            return redirect(url_for('main.update_word', _external=True))
+    content = {
+            'form': form,
+            'word': word
+            }
+    return render_template('main/update_word.html', **content)
 
 
 @main.route('/word/<int:word_id>', methods=['GET', 'POST'])

@@ -1,0 +1,51 @@
+{# application/templates/main/update_word.html #}
+
+{% extends "layout.html" %}
+
+{% block title %}Update{% endblock %}
+
+{% block content %}
+
+  <h2 class="page__header-2">Esp<span class="sans--serif">2</span>Eng<span class="sans--serif">!</span></h2>
+
+  <form class="form--wide" action="" method="POST">
+
+    {{ form.csrf_token }}
+    <div class="form__div">
+      {{ form.word_es.label }}
+      {{ form.word_es(class_="form__input", autofocus=true) }}
+    </div>
+    <div class="form__div">
+      {{ form.sentence1_es.label }}
+      {{ form.sentence1_es(class_="form__input") }}
+      {{ form.sentence1_en.label }}
+      {{ form.sentence1_en(class_="form__input") }}
+    </div>
+    <div class="form__div">
+      {{ form.sentence2_es.label }}
+      {{ form.sentence2_es(class_="form__input") }}
+      {{ form.sentence2_en.label }}
+      {{ form.sentence2_en(class_="form__input") }}
+    </div>
+    <div class="form__div">
+      {{ form.sentence3_es.label }}
+      {{ form.sentence3_es(class_="form__input") }}
+      {{ form.sentence3_en.label }}
+      {{ form.sentence3_en(class_="form__input") }}
+    </div>
+    <div class="form__div">
+      {{ form.definition1_en.label }}
+      {{ form.definition1_en(class_="form__input") }}
+      {{ form.definition2_en.label }}
+      {{ form.definition2_en(class_="form__input") }}
+      {{ form.definition3_en.label }}
+      {{ form.definition3_en(class_="form__input") }}
+      {{ form.definition4_en.label }}
+      {{ form.definition4_en(class_="form__input") }}
+    </div>
+    {{ form.submit(class_="bttn") }} 
+    <a class="bttn bttn--link bttn--outline" href="{{ url_for('main.display_word', word_id=word.id) }}">CANCEL</a>
+
+  </form>
+
+{% endblock %}
