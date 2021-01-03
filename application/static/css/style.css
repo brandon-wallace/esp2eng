@@ -273,13 +273,25 @@ form {
     height: 45px;
     display: block;
     color: #FFFFFF;
+    margin: 0 auto;
+    max-width: 400px;
     font-weight: bold;
     font-size: 1.25rem;
+    border-radius: 4px;
     font-family: inherit;
     letter-spacing: 2.5px;
     background-color: #0066FF;
     text-transform: uppercase;
     border: 2px solid var(--fg, #333333);
+    border: 3px solid #0C00AC;
+}
+
+.bttn--link {
+    max-width: 400px;
+    text-align: center;
+    line-height: 40px;
+    box-sizing: border-box;
+    margin: 1rem auto 0 auto;
 }
 
 .page__navigation {
@@ -549,6 +561,13 @@ footer {
 
 .bttn--large {
     height: 50px;
+    width: 100%;
+}
+
+.bttn--outline {
+    color: #0C00AC;
+    border: 3px solid #0C00AC;
+    background-color: transparent;
 }
 
 .header-2 {
