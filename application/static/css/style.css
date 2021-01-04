@@ -251,6 +251,7 @@ form {
     padding: 0 .5rem;
     font-size: 1.4rem;
     font-weight: bold;
+    border-radius: 4px;
     font-family: inherit;
     margin-bottom: .5rem;
     border: 2px solid purple;
@@ -562,6 +563,7 @@ footer {
 .bttn--large {
     height: 50px;
     width: 100%;
+    max-width: unset;
 }
 
 .bttn--outline {
