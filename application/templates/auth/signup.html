@@ -21,16 +21,9 @@
       {{ displayField(form.firstname, "First Name*") }}
       {{ displayField(form.lastname, "Last Name*") }}
       {{ displayField(form.email, "Enter Email*") }}
-      {{ displayField(form.password, "Enter Password*", class="form__input passwd__field") }}
+      {{ displayField(form.password, "Enter Password*", class="form__input passwd__field", ariadescribedby="password__consraints") }}
       {{ displayField(form.confirm_password, "Re-Enter Password*", class="form__input passwd__field") }}
-      {#
-      <p>
-        {% for error in form.recaptcha.errors %}
-            {{ error }}
-        {% endfor %}
-        {{ form.recaptcha }}
-      </p>
-      #}
+      <p id="password__constraints">10+ characters with at least one, uppercase, number, and symbol.</p>
       {{ form.submit(class_="bttn bttn--large") }}
       <p class="form__agreement">By clicking Sign Up, I agree to the Esp2eng
       <a class="login__link anchor__link" href="{{ url_for('auth.terms_of_service') }}">Terms of Service</a> and 
