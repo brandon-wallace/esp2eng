@@ -78,17 +78,17 @@ def update_word(word_id):
         form.definition4_en.data = word.definition4_en
     elif form.validate_on_submit():
         try:
-            word_es = form.word_es.data
-            sentence1_es = form.sentence1_es.data
-            sentence1_en = form.sentence1_en.data
-            sentence2_es = form.sentence2_es.data
-            sentence2_en = form.sentence2_en.data
-            sentence3_es = form.sentence3_es.data
-            sentence3_en = form.sentence3_en.data
-            definition1_en = form.definition1_en.data
-            definition2_en = form.definition2_en.data
-            definition3_en = form.definition3_en.data
-            definition4_en = form.definition4_en.data
+            word.word_es = form.word_es.data
+            word.sentence1_es = form.sentence1_es.data
+            word.sentence1_en = form.sentence1_en.data
+            word.sentence2_es = form.sentence2_es.data
+            word.sentence2_en = form.sentence2_en.data
+            word.sentence3_es = form.sentence3_es.data
+            word.sentence3_en = form.sentence3_en.data
+            word.definition1_en = form.definition1_en.data
+            word.definition2_en = form.definition2_en.data
+            word.definition3_en = form.definition3_en.data
+            word.definition4_en = form.definition4_en.data
             db.session.commit()
             db.session.remove()
             flash('Word updated successfully', 'success')
