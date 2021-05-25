@@ -2,6 +2,7 @@
   font-family: 'RampageKid';
   src: url('../fonts/RampageKid.otf') format('opentype'),
        url('../fonts/RampageKid.ttf') format('truetype');
+  font-display: fallback;
 }
 
 :root {
