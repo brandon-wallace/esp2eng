@@ -36,19 +36,13 @@
           <ul class="menu">
 
             <li class="menu__item"><a class="menu__link" href="{{ url_for('main.index') }}">home</a></li>
+            <li class="menu__item"><a class="menu__link" href="{{ url_for('main.translation') }}">translation</a></li>
             {% if current_user.is_authenticated %}
               <li class="menu__item"><a class="menu__link" href="{{ url_for('main.vocabulary') }}">vocabulary</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('main.display_user_words') }}">my words</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('main.add_word') }}">add word</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.profile') }}">profile</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.logout') }}">logout</a></li>
-              {% if user_initials %}
-                <div class="menu__user__initials">
-                  <span class="initials">
-                  {{ user_initials }}
-                  </span>
-                </div>
-              {% endif %}
             {% else %}
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.sign_up') }}">signup</a></li>
               <li class="menu__item"><a class="menu__link" href="{{ url_for('auth.login') }}">login</a></li>
