@@ -2,8 +2,15 @@ from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, SubmitField)
 from wtforms.validators import (InputRequired, Email, EqualTo,
                                 Length, ValidationError)
-# from flask_wtf.recaptcha import RecaptchaField
 from application.models import User
+
+
+class SearchForm(FlaskForm):
+    '''Search form for word translations'''
+
+    word = StringField('Translate Spanish to English or English to Spanish',
+                       validators=[InputRequired()])
+    submit = SubmitField('Translate')
 
 
 class SignUpForm(FlaskForm):

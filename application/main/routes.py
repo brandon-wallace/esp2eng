@@ -1,12 +1,12 @@
+from os import environ
+import requests
 from flask import (Blueprint, render_template, redirect,
                    url_for, flash, request, abort)
 from flask_login import login_required, current_user
-# from flask_paginate import Pagination, get_page_parameter
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql import func
 from application import db
-# from application.main import main
-from application.forms import AddEntryForm, UpdateEntryForm
+from application.forms import AddEntryForm, UpdateEntryForm, SearchForm
 from application.models import Word
 
 main = Blueprint('main', __name__,
@@ -20,6 +20,27 @@ def index():
 
     words = Word.query.order_by(func.random()).limit(1)
     return render_template('main/index.html', words=words)
+
+
+def query_api(word):
+    '''Query API for translation'''
+
+    api_key = environ.get('API_KEY')
+    url = requests.get(f'{api_key}')
+    print(url.status_code)
+    return 'Queried API'
+
+
+@main.route('/translate', methods=['GET', 'POST'])
+def translation():
+    '''Translate ES => EN or EN => ES'''
+
+    form = SearchForm()
+    if form.validate_on_submit():
+        if current_user.is_anonymous:
+            flash('Please sign in to translate words.', 'warning')
+        return redirect(url_for('main.translation'))
+    return render_template('main/translation.html', form=form)
 
 
 @main.route('/add-word', methods=['GET', 'POST'])
