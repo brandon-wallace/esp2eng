@@ -73,9 +73,7 @@ def login():
 def profile():
     '''User profile route'''
 
-    # words = Word.query.order_by(func.random())
-    user_initials = current_user.firstname[0] + current_user.lastname[0]
-    return render_template('auth/profile.html', user_initials=user_initials)
+    return render_template('auth/profile.html')
 
 
 @auth.route('/logout')
