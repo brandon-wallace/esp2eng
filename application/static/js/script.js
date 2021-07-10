@@ -1,14 +1,14 @@
 // application/static/js/script.js
 
 
-// HAMBURGER MENU
+// HAMBURGER MENU TOGGLE
 
 const hamburgerButton = document.querySelector('.hamburger');
 const navigation = document.querySelector('nav');
 
 let menuToggle = false;
 
-if (window.innerWidth < 750) {
+if (window.innerWidth < 1050) {
     hamburgerButton.addEventListener('click', () => {
         menuToggle = menuToggle === false ? true : false;
         if (menuToggle) {
@@ -19,6 +19,8 @@ if (window.innerWidth < 750) {
           navigation.style.display = 'none';
         }
     });
+} else {
+    menuToggle = false;
 }
 
 
@@ -27,7 +29,6 @@ if (window.innerWidth < 750) {
 const showTranslation = document.querySelectorAll('.show-translation-bttn');
 
 if (showTranslation) {
-
     const showText = () => {
         let sentence = document.querySelectorAll('.hidden');
         for (let i = 0; i < sentence.length; i++) {
@@ -37,7 +38,6 @@ if (showTranslation) {
     for (let i = 0; i < showTranslation.length; i++) {  
         showTranslation[i].addEventListener('click', showText);
     } 
-
 }
 
 
