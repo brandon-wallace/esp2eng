@@ -4,28 +4,30 @@
 
 {% block content %}
 
-    <div class="words">
+  <h2 class="page__header-2">Esp<span class="sans--serif">2</span>Eng<span class="sans--serif">!</span></h2>
 
-      {% if words %}
+  <div class="words">
 
-        {% for word in words %}
+    {% if words %}
 
-          <div class="word__list">
+      {% for word in words %}
 
-            <div class="word__content">
+        <div class="word__list">
 
-              <div class="word__header">
-                <h2 class="word__title"><a class="underline" href="{{ url_for('main.display_word', word_id=word.id) }}">{{ word.word_es }}</a></h2>
-              </div>
+          <div class="word__content">
 
+            <div class="word__header">
+              <h2 class="word__title"><a class="underline" href="{{ url_for('main.display_word', word_id=word.id) }}">{{ word.word_es }}</a></h2>
             </div>
 
           </div>
 
-        {% endfor %}
+        </div>
 
-      {% endif %}
+      {% endfor %}
 
-    </div>
+    {% endif %}
+
+  </div>
 
 {% endblock %}
