@@ -3,6 +3,7 @@ api_output.json
 *.swp
 *.pyc
 *.log
+query.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
