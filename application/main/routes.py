@@ -26,9 +26,15 @@ def query_api(word):
     '''Query API for translation'''
 
     api_key = environ.get('API_KEY')
-    url = requests.get(f'{api_key}')
-    print(url.status_code)
-    return 'Queried API'
+
+    params = (
+        ('l', 'enes'),
+        ('q', word),
+    )
+    headers = {"X-Secret": api_key}
+    response = requests.get('https://api.pons.com/v1/dictionary',
+                            params=params, headers=headers)
+    return response
 
 
 @main.route('/translate', methods=['GET', 'POST'])
@@ -39,7 +45,10 @@ def translation():
     if form.validate_on_submit():
         if current_user.is_anonymous:
             flash('Please sign in to translate words.', 'warning')
-        return redirect(url_for('main.translation'))
+            return redirect(url_for('main.translation'))
+        else:
+            query_api(form.word.data)
+            return
     return render_template('main/translation.html', form=form)
 
 
